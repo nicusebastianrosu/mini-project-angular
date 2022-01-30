@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h3 class="display-4">
+                <input class="form-control" placeholder="Please, add new task here!" autofocus=""
+                    [(ngModel)]="newTask.title" (keyup.enter)="addTask()">
+
+            </h3>
+            <section *ngIf="projectDataService.tasks.length > 0">
+                <ul>
+                    <li *ngFor="let task of projectDataService.tasks">
+                        <div>
+                            <input type="checkbox" (click)="toggleTaskComplete(task)"
+                                [checked]="task.complete">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>
+                                <h3 [class.completed]="task.complete">{{task.title}}</h3>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <!--<button md-raised-button class="mat-warn" (click)="removeTask(task)">X</button>-->
+                            <button mat-raised-button color="warn" class="mat-warm"
+                                (click)="removeTask(task)">X</button>
+
+                        </div>
+                    </li>
+                </ul>
+
+
+
+            </section>
+            <br />
+            <input type="button" class="btn btn-primary" (click)="onBackButtonClick()" value="Exit" />
+
+
+        </div>
+
+    </div>
+</div>
